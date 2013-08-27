@@ -4,19 +4,19 @@
 		<style>
 			*{margin:0;padding: 0;}
 			body{font-family: Helvetica Neue; text-align: center;}
-			h1{font-size: 350px;}
+			#instruction{font-size: 350px; text-transform: uppercase;}
 			p{font-size: 18px; color: #4D4D4D;}
 		</style>
 	</head>
 	<body>
-		<h1>NO</h1>
-		<p> Chris says you can’t go home yet. Come back in <span id='cntdwn' ></span></p>
+		<h1 id="instruction">No</h1>
+		<p> <!-- Chris says you can’t go home yet. Come back in --> <span id='cntdwn' ></span></p>
 		<script language="JavaScript"> 
 			TargetDate = "08/30/2013 3:00 PM"; 
 			CountActive = true; 
 			CountStepper = -1; 
 			LeadingZero = false; 
-			DisplayFormat = "%%D%% Days, %%H%% Hours, %%M%% Minutes, %%S%% Seconds."; 
+			DisplayFormat = "Chris says you can’t go home yet. Come back in %%D%% Days, %%H%% Hours, %%M%% Minutes, %%S%% Seconds."; 
 			FinishMessage = "Chris says you can go home now. Have a great long weekend."; 
 		</script> 
 		<script language="JavaScript" src="countdown.js"></script>

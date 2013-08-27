@@ -16,6 +16,7 @@ function calcage(secs, num1, num2) {
 function CountBack(secs) {
   if (secs < 0) {
     document.getElementById("cntdwn").innerHTML = FinishMessage;
+    document.getElementById("instruction").innerHTML = "Yes!";
     return;
   }
   DisplayStr = DisplayFormat.replace(/%%D%%/g, calcage(secs,86400,100000));
