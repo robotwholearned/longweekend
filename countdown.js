@@ -19,7 +19,8 @@ function CountBack(secs) {
     document.getElementById("instruction").innerHTML = "Yes!";
     return;
   }
-  DisplayStr = DisplayFormat.replace(/%%D%%/g, calcage(secs,86400,100000));
+  DisplayStr = DisplayFormat;
+  
   DisplayStr = DisplayStr.replace(/%%H%%/g, calcage(secs,3600,24));
   DisplayStr = DisplayStr.replace(/%%M%%/g, calcage(secs,60,60));
   DisplayStr = DisplayStr.replace(/%%S%%/g, calcage(secs,1,60));
