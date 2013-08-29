@@ -31,10 +31,13 @@ function CountBack(secs) {
   }
   DisplayStr = DisplayFormat;
   var hours, minutes, seconds;
+  days = calcage(secs,86400,100000);
   hours = calcage(secs,3600,24);
   minutes = calcage(secs,60,60);
   seconds = calcage(secs,1,60);
 
+  DisplayStr = DisplayStr.replace(/%%D%%/g, days.s);
+  DisplayStr = DisplayStr.replace(/%%ds%%/g, days.isPlural ? "s" : "");
   DisplayStr = DisplayStr.replace(/%%H%%/g, hours.s);
   DisplayStr = DisplayStr.replace(/%%hs%%/g, hours.isPlural ? "s" : "");
   DisplayStr = DisplayStr.replace(/%%M%%/g, minutes.s);
