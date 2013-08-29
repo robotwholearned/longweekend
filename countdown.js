@@ -7,11 +7,21 @@ name, Web address and this disclaimer is kept intact.
 ********************************************************
 */
 
+/*
+  I know this is garbage, but  I don't care!!!!!!!!!
+  -Cassandra Sandquist
+*/
 function calcage(secs, num1, num2) {
-  s = ((Math.floor(secs/num1))%num2).toString();
-  if (LeadingZero && s.length < 2)
-    s = "0" + s;
-  return "<b>" + s + "</b>";
+  var results = {};
+  results.isPlural = true;
+  results.s = ((Math.floor(secs/num1))%num2).toString();
+  if (LeadingZero && results.s.length < 2){
+    results.s = "0" + results.s;
+  }
+  if (results.s === "01"){
+    results.isPlural = false;
+  }
+  return results;
 }
 function CountBack(secs) {
   if (secs < 0) {
@@ -20,10 +30,17 @@ function CountBack(secs) {
     return;
   }
   DisplayStr = DisplayFormat;
-  
-  DisplayStr = DisplayStr.replace(/%%H%%/g, calcage(secs,3600,24));
-  DisplayStr = DisplayStr.replace(/%%M%%/g, calcage(secs,60,60));
-  DisplayStr = DisplayStr.replace(/%%S%%/g, calcage(secs,1,60));
+  var hours, minutes, seconds;
+  hours = calcage(secs,3600,24);
+  minutes = calcage(secs,60,60);
+  seconds = calcage(secs,1,60);
+
+  DisplayStr = DisplayStr.replace(/%%H%%/g, hours.s);
+  DisplayStr = DisplayStr.replace(/%%hs%%/g, hours.isPlural ? "s" : "");
+  DisplayStr = DisplayStr.replace(/%%M%%/g, minutes.s);
+  DisplayStr = DisplayStr.replace(/%%ms%%/g, minutes.isPlural ? "s" : "");
+  DisplayStr = DisplayStr.replace(/%%S%%/g, seconds.s);
+  DisplayStr = DisplayStr.replace(/%%ss%%/g, seconds.isPlural ? "s" : "" );
   document.getElementById("cntdwn").innerHTML = DisplayStr;
   if (CountActive)
     setTimeout("CountBack(" + (secs+CountStepper) + ")", SetTimeOutPeriod);
